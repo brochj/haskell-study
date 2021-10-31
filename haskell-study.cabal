@@ -19,13 +19,13 @@ maintainer:         brochj@gmail.com
 -- A copyright notice.
 -- copyright:
 -- category:
-extra-source-files: CHANGELOG.md
+extra-source-files: README.md
 
 library
     exposed-modules:  
         MyLib
         Baby
-
+        Analyze
     -- Modules included in this library but not exported.
     -- other-modules:
 
@@ -40,7 +40,9 @@ executable haskell-study
 
     -- Modules included in this executable, other than Main.
     -- other-modules:
-
+    --     MyLib
+    --     Baby
+    --     Analyze
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:
