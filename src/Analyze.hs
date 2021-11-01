@@ -1,7 +1,6 @@
 module Analyze where
 import Data.List (nub)
 
-
 removePunctuation :: String -> String
 removePunctuation = filter (`notElem` chars)
     where chars = "!\"#$%&()*+,./:;<=>?@[\\]^_`{|}~0123456789"
