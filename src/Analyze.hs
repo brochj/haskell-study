@@ -81,4 +81,21 @@ meaningARI indexARI = putStrLn $ findKey parameterizedARI meaning_string
             ]
 
 findKey :: (Eq k) => k -> [(k,v)] -> v
-findKey key = snd . head . filter (\(k,v) -> key == k)    
+findKey key = snd . head . filter (\(k,v) -> key == k)
+
+numberOfRectangles ::  Int -> Int -> Int
+numberOfRectangles lin col = sum [1..lin] * sum [1..col]
+
+-- validBraces :: String -> Bool
+-- validBraces xs = span (\c -> c /=')' || c/= ']' || c/= '}' ) xs
+
+validBraces :: String -> Bool
+-- validBraces xs = break (\c -> c ==')' ) xs
+validBraces xs
+    | odd (length xs) = False
+    | otherwise = True
+    where
+        (opened, rest) = span (\c -> c == '(' || c == '[' || c == '{' ) xs
+        valid = opened
+
+-- scanl (\acc c -> if c == '(' || c == '[' || c == '{' then c else 'a') ' ' "[][][][](){{}}"
