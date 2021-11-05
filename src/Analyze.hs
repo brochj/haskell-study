@@ -1,5 +1,6 @@
 module Analyze where
 import Data.List (nub)
+import Debug.Trace (trace)
 
 removePunctuation :: String -> String
 removePunctuation = filter (`notElem` chars)
@@ -86,16 +87,18 @@ findKey key = snd . head . filter (\(k,v) -> key == k)
 numberOfRectangles ::  Int -> Int -> Int
 numberOfRectangles lin col = sum [1..lin] * sum [1..col]
 
--- validBraces :: String -> Bool
--- validBraces xs = span (\c -> c /=')' || c/= ']' || c/= '}' ) xs
 
 validBraces :: String -> Bool
--- validBraces xs = break (\c -> c ==')' ) xs
-validBraces xs
-    | odd (length xs) = False
-    | otherwise = True
-    where
-        (opened, rest) = span (\c -> c == '(' || c == '[' || c == '{' ) xs
-        valid = opened
+validBraces s = "" == foldr collapse [] s
 
--- scanl (\acc c -> if c == '(' || c == '[' || c == '{' then c else 'a') ' ' "[][][][](){{}}"
+collapse :: Char -> [Char] -> [Char]
+collapse '(' (')':xs) = xs
+collapse '{' ('}':xs) = xs
+collapse '[' (']':xs) = xs
+collapse x xs = x:xs
+
+-- False
+
+-- "[([)"
+-- "())({}}{()][]["
+-- "({})[({})]]["
