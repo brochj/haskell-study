@@ -97,8 +97,3 @@ collapse '{' ('}':xs) = xs
 collapse '[' (']':xs) = xs
 collapse x xs = x:xs
 
--- False
-
--- "[([)"
--- "())({}}{()][]["
--- "({})[({})]]["
